@@ -1,54 +1,50 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Alexander Seidl 19961115</title>
+        <link rel="stylesheet" href="stil.css">
     </head>
     <body>
-        
+
         <form>
             <input type="text" name="textruta">
             <input type="submit">
         </form>
+        <br>
+        <a href="index.php?Rensa">Rensa</a>
         <?php
-        if(isset($_GET["textruta"])){
-            
-            $tmp = $_GET["textruta"];
-            
-            $kakArray = unserialize($_COOKIE["list"]);
-            
-            array_push($kakArray, $tmp);
-            
-            $kakStr = serialize($kakArray);
-            
-            setcookie("list", $kakStr, time()+3601);
-            
-            echo $kakStr . '<br>';
+        //variabler
+        $kakArray = array();
 
-//              echo $_COOKIE["lista"];
-//            
-//              $skovit = array();
-//              
-//              
-//              array_push($skovit, $tmp);
-//              
-//              setcookie("lista", serialize($skovit), time()+3600);
-//              
-//              echo $_COOKIE["lista"];
-//              
-//            
-//            $tmp = $_GET["textruta"];
-//            array_push($skovit, $tmp);
-//            
-//            var_dump($skovit);
+
+        if (isset($_GET["textruta"])) {
+
+            $tmp = $_GET["textruta"];
+
+            if (isset($_COOKIE["lista"])) {
+                $kakArray = unserialize($_COOKIE["lista"]);
+            }
+            if ($tmp == "") {
                 
-        
-        }
-        else{
+            } else {
+                array_push($kakArray, $tmp);
+            }
+            $kakStr = serialize($kakArray);
+
+            setcookie("lista", $kakStr, time() + 3600);
+
+            echo '<div>'.'<ol>';
+            foreach ($kakArray as $skriv_ut) {
+                echo '<li>' . $skriv_ut . '</li>';
+            }
+            echo '</ol>'.'</div>';
+        } else {
             
         }
-            
+        if (isset($_GET["Rensa"])) {
+            setcookie("lista", 0, time() - 3600);
+        }
         ?>
     </body>
 </html>

@@ -1,0 +1,12 @@
+*{
+    font-family: comic sans ms;
+    color: white;
+    background-color: #00ff55;
+}
+div{
+    border: 2px dotted yellow;
+    width: 250px;
+}
+a{
+    color: deeppink;
+}
