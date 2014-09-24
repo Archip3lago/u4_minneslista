@@ -16,7 +16,7 @@
         <br>
         
 <!--        Länk till att rensa kaka-->
-        <a href="index.php?Rensa">Rensa</a>
+<a href="index.php?Rensa">Rensa</a> | <a href="index.php">Nollställ</a>
         <?php
         //deklarerar en array
         $kakArray = array();
